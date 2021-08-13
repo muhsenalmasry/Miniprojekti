@@ -22,6 +22,7 @@ namespace Miniprojekti.Controllers
         {
                 Academy21ChatDBContext chatdb = new();
                 chatdb.Messages.Add(message);
+                chatdb.SaveChanges();
                 return View();
         }
         public IActionResult ReadMessages()
