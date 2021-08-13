@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Miniprojekti.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +13,15 @@ namespace Miniprojekti.Controllers
         {
             return View();
         }
-        public IActionResult CreateMessage()
+        //public IActionResult CreateMessage()
+        //{
+        //    return View();
+        //}
+        public IActionResult CreateMessage([FromForm] Message message)
         {
-            return View();
+                Academy21ChatDBContext chatdb = new();
+                chatdb.Messages.Add(message);
+                return View();
         }
         public IActionResult ReadMessages()
         {
