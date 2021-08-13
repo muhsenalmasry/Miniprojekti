@@ -20,9 +20,17 @@ namespace Miniprojekti.Controllers
         [HttpPost]
         public IActionResult CreateMessage([FromForm] Message message)
         {
+            if (message != null)
+            {
                 Academy21ChatDBContext chatdb = new();
                 chatdb.Messages.Add(message);
+                chatdb.SaveChanges();
+                return RedirectToAction("ReadMessage");
+            }
+            else
+            {
                 return View();
+            }
         }
         public IActionResult ReadMessages()
         {
