@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace Miniprojekti.Controllers
 {
@@ -19,6 +20,7 @@ namespace Miniprojekti.Controllers
                 {
                     return View();
                 }
+                HttpContext.Session.SetInt32("personId", person.PersonId);
                 return RedirectToAction("Index", "Messages");
             }
             return View();

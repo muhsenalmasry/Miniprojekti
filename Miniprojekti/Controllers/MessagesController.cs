@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace Miniprojekti.Controllers
 {
@@ -15,6 +16,7 @@ namespace Miniprojekti.Controllers
         }
         public IActionResult CreateMessage()
         {
+            ViewBag.personId = HttpContext.Session.GetInt32("personId");
             return View();
         }
         [HttpPost]
@@ -25,7 +27,7 @@ namespace Miniprojekti.Controllers
                 Academy21ChatDBContext chatdb = new();
                 chatdb.Messages.Add(message);
                 chatdb.SaveChanges();
-                return RedirectToAction("ReadMessage");
+                return RedirectToAction("ReadMessages");
             }
             else
             {
