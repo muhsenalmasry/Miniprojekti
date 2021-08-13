@@ -4,10 +4,10 @@
     ViewData["Title"] = "ReadMessages";
 }
 
-<h1>ReadMessages</h1>
+<h1>Read Messages</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="CreateMessage">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -22,21 +22,8 @@
                 @Html.DisplayNameFor(model => model.SendTime)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PrivateMessage)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ToPersonId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ExpireAt)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Category)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.FromPerson)
             </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -52,24 +39,7 @@
                 @Html.DisplayFor(modelItem => item.SendTime)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PrivateMessage)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ToPersonId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ExpireAt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.FromPerson.Description)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.MessageId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.MessageId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.MessageId">Delete</a>
             </td>
         </tr>
 }
