@@ -13,10 +13,10 @@ namespace Miniprojekti.Controllers
         {
             return View();
         }
-        //public IActionResult CreateMessage()
-        //{
-        //    return View();
-        //}
+        public IActionResult CreateMessage()
+        {
+            return View();
+        }
         [HttpPost]
         public IActionResult CreateMessage([FromForm] Message message)
         {
