@@ -14,8 +14,8 @@ namespace Miniprojekti.Controllers
             if(!string.IsNullOrEmpty(Nickname) || !string.IsNullOrEmpty(Password))
             {
                 Academy21ChatDBContext db = new();
-                var henkilö = db.People.Where(p => p.NickName == Nickname && p.Password == Password).FirstOrDefault();
-                if (henkilö == null)
+                var person = db.People.Where(p => p.NickName == Nickname && p.Password == Password).FirstOrDefault();
+                if (person == null)
                 {
                     return View();
                 }
