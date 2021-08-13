@@ -9,20 +9,22 @@ namespace Miniprojekti.Controllers
 {
     public class LoginController : Controller
     {
-        public IActionResult Index(Person p)
+        public IActionResult Index(string Nickname, string Password)
         {
-            if(p == null)
-                return View();
-            else
+            if(!string.IsNullOrEmpty(Nickname) || !string.IsNullOrEmpty(Password))
             {
                 Academy21ChatDBContext db = new();
-                var viestit = db.Messages.Select(m=>m);
-                foreach (var v in viestit)
+                var henkilö = db.People.Where(p => p.NickName == Nickname && p.Password == Password).FirstOrDefault();
+                if (henkilö == null)
                 {
-                    db.Entry(v).Collection("FromPerson").Load();
+                    return View();
                 }
-                return View(viestit);
+                return RedirectToAction("Index", "Messages");
             }
+            return View();
+            
         }
+
+        
     }
 }
