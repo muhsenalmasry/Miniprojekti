@@ -17,6 +17,7 @@ namespace Miniprojekti.Controllers
         //{
         //    return View();
         //}
+        [HttpPost]
         public IActionResult CreateMessage([FromForm] Message message)
         {
                 Academy21ChatDBContext chatdb = new();
@@ -25,7 +26,8 @@ namespace Miniprojekti.Controllers
         }
         public IActionResult ReadMessages()
         {
-            return View();
+            Academy21ChatDBContext chatdb = new();
+            return View(chatdb.Messages.ToList());
         }
     }
 }
